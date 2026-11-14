@@ -13,3 +13,6 @@ __pycache__/
 *.keystore
 .env
 .github-token
+токен.txt
+token.txt
+github_token.txt

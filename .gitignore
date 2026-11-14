@@ -1,0 +1,15 @@
+.gradle/
+.kotlin/
+**/build/
+local.properties
+*.db
+*.db-shm
+*.db-wal
+*.apk
+__pycache__/
+.venv/
+.idea/
+*.jks
+*.keystore
+.env
+.github-token

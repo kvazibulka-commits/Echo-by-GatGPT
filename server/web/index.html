@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#09090b"><meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="/manifest.webmanifest"><link rel="icon" href="/icon.svg"><link rel="stylesheet" href="/style.css">
+<title>ЭХО · Эфир</title><script src="/app.js" defer></script></head>
+<body><main><header><span>ЭХО</span><p>Музыка, которая живет рядом</p></header>
+<p id="status" role="status">Подключаемся к эфиру…</p>
+<section aria-labelledby="air-title"><h1 id="air-title">Эфир</h1><div id="signals"></div></section>
+<section><h2>Оставить свой трек в эфире</h2><p>На iOS укажите трек вручную. ЭХО не воспроизводит музыку.</p>
+<form id="broadcast"><label>Исполнитель<input name="artist" maxlength="160" required></label>
+<label>Трек<input name="title" maxlength="160" required></label><label>Жанр<input name="genre" maxlength="160"></label>
+<label class="check"><input name="open" type="checkbox">Открыт для музыкальных встреч</label>
+<button type="submit">Войти в эфир</button><button type="button" id="leave">Завершить трансляцию</button></form>
+<button id="location">Определить район</button><p id="location-status">Для сигналов рядом нужен район. Позиция огрубляется перед отправкой.</p></section>
+<section><h2>Капсулы рядом</h2><div id="capsules">Выберите район, чтобы найти оставленную музыку.</div></section>
+<details><summary>Подключение</summary><label>Токен узла<input id="token" type="password" autocomplete="off"></label>
+<button id="save-token">Использовать в этой вкладке</button></details>
+<footer>Ты видишь музыку, которая сейчас живет вокруг тебя.</footer></main></body></html>

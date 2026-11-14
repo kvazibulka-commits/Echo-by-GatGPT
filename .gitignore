@@ -16,3 +16,5 @@ __pycache__/
 токен.txt
 token.txt
 github_token.txt
+.echo-delivery.json
+build-output/

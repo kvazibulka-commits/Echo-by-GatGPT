@@ -4,7 +4,7 @@ plugins {
 }
 android {
     namespace = "ru.echo.radar"
-    compileSdk = 37
+    compileSdk = 36
     defaultConfig {
         applicationId = "ru.echo.radar"
         minSdk = 26

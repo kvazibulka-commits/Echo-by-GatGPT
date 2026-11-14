@@ -22,7 +22,7 @@ jobs:
         run: |
           python -m py_compile server/echo_server.py
           python -m unittest discover -s tests -v
-      - name: Accept SDK licenses and install compile SDK 37
+      - name: Accept SDK licenses and install compile SDK 36
         shell: bash
         run: |
           export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
@@ -31,7 +31,7 @@ jobs:
           result=${PIPESTATUS[1]}
           set -o pipefail
           test "$result" -eq 0
-          sdkmanager "platforms;android-37" "build-tools;36.0.0" 2>&1 | tee sdk-install.log
+          sdkmanager "platforms;android-36" "build-tools;36.0.0" 2>&1 | tee sdk-install.log
       - uses: gradle/actions/setup-gradle@v6
       - name: Build and test
         run: |

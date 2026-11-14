@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: actions/setup-java@v5
         with:
           distribution: temurin
@@ -22,7 +22,7 @@ jobs:
         run: |
           python -m py_compile server/echo_server.py
           python -m unittest discover -s tests -v
-      - name: Accept SDK licenses and install SDK 34
+      - name: Accept SDK licenses and install compile SDK 37
         shell: bash
         run: |
           export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
@@ -31,8 +31,8 @@ jobs:
           result=${PIPESTATUS[1]}
           set -o pipefail
           test "$result" -eq 0
-          sdkmanager "platforms;android-34" "build-tools;34.0.0" 2>&1 | tee sdk-install.log
-      - uses: gradle/actions/setup-gradle@v4
+          sdkmanager "platforms;android-37" "build-tools;36.0.0" 2>&1 | tee sdk-install.log
+      - uses: gradle/actions/setup-gradle@v6
       - name: Build and test
         run: |
           chmod +x gradlew
@@ -47,7 +47,7 @@ jobs:
               text = text.replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
               print(f'::error title={path.name}::{text}')
           PY
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v7
         with:
           name: echo-debug-apk
           path: app/build/outputs/apk/debug/app-debug.apk

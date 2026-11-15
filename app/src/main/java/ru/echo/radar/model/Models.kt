@@ -26,3 +26,11 @@ data class Encounter(
 data class Impulse(val id: String, val senderId: String, val targetId: String, val createdAt: Double)
 data class MusicPresence(val track: Track, val source: String, val playing: Boolean)
 data class Resonance(val score: Int, val sharedGenres: Set<String>, val sharedArtist: Boolean)
+data class EchoState(
+    val signals: List<Signal> = emptyList(),
+    val capsules: List<Capsule> = emptyList(),
+    val encounters: List<Encounter> = emptyList(),
+    val impulses: List<Impulse> = emptyList(),
+    val serverTime: Double? = null,
+)
+enum class SyncStatus { IDLE, LOADING, ONLINE, OFFLINE, ERROR }

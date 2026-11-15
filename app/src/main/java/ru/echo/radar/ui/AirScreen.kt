@@ -10,9 +10,11 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
@@ -34,6 +36,7 @@ import ru.echo.radar.model.EchoState
 import ru.echo.radar.model.Signal
 import ru.echo.radar.model.Track
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AirScreen(state: EchoState, currentTrack: Track?) {
     var selected by remember { mutableStateOf<Signal?>(null) }
@@ -68,9 +71,10 @@ private fun Radar(signalCount: Int) {
             drawLine(Color(0xFF303033), Offset(center.x, center.y - radius), Offset(center.x, center.y + radius), 1f)
             drawLine(Color(0xFF303033), Offset(center.x - radius, center.y), Offset(center.x + radius, center.y), 1f)
             drawLine(Color(0x55EEEAE3), center, Offset(center.x + radius * .65f, center.y - radius * .68f), 2f)
-            drawCircle(Color(0xFFEEEAE3), center, 4f)
+            drawCircle(Color(0xFFEEEAE3), radius = 4f, center = center)
             if (signalCount > 0) listOf(.2f to -.5f, -.55f to .25f, .58f to .4f).take(signalCount.coerceAtMost(3)).forEachIndexed { index, pair ->
-                drawCircle(if (index == 1) Color(0x99EEEAE3) else Color(0xFFEEEAE3), Offset(center.x + radius * pair.first, center.y + radius * pair.second), 7f)
+                drawCircle(if (index == 1) Color(0x99EEEAE3) else Color(0xFFEEEAE3), radius = 7f,
+                    center = Offset(center.x + radius * pair.first, center.y + radius * pair.second))
             }
         }
         Text("ТЫ ЗДЕСЬ\n$signalCount трека рядом", style = MaterialTheme.typography.labelSmall,

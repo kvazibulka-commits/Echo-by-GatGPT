@@ -29,13 +29,14 @@ class EchoApiClient(
         require(it.startsWith("http://") || it.startsWith("https://")) { "Echo URL must use HTTP(S)" }
     }
 
-    suspend fun publish(sessionId: String, presence: EchoPresence, point: GeoPoint?): Unit =
+    suspend fun publish(sessionId: String, presence: EchoPresence, point: GeoPoint?) {
         request("/api/signal", JSONObject().apply {
             put("session_id", sessionId); put("artist", presence.track.artist)
             put("title", presence.track.title); put("genre", presence.track.genre)
             put("source", presence.source); put("open_to_meet", presence.openToMeet)
             point?.let { put("latitude", it.latitude); put("longitude", it.longitude) }
         })
+    }
 
     suspend fun sync(sessionId: String): EchoState = parseState(
         request("/api/sync", JSONObject().put("session_id", sessionId))

@@ -82,6 +82,9 @@
   `AndroidManifest.xml` и `classes.dex`. APK SHA-256:
   `694331bc7ea7d4928ec6ca3525d405ef1700f924dca7c221b073ed2663204d03`, размер
   11 534 498 байт.
+- Первый CI HTTP repository выявил compile-time ошибку Kotlin в `publish()`:
+  expression body возвращал JSONObject вместо объявленного Unit. Исправлено
+  точечной заменой на block body; повторный CI обязателен.
 - Существующий Drive-файл `echo-latest.apk` обновлен in-place: тот же ID,
   та же папка «ЭХО», размер после обновления подтвержден метаданными Drive.
 

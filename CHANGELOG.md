@@ -85,6 +85,9 @@
 - Первый CI HTTP repository выявил compile-time ошибку Kotlin в `publish()`:
   expression body возвращал JSONObject вместо объявленного Unit. Исправлено
   точечной заменой на block body; повторный CI обязателен.
+- Следующий CI скомпилировал APK, но новый JVM-тест использовал Android
+  `JSONObject.NULL` и упал на platform stub. Production-код не был причиной;
+  тест упрощен до чистой проверки URL и GeoPoint.
 - Существующий Drive-файл `echo-latest.apk` обновлен in-place: тот же ID,
   та же папка «ЭХО», размер после обновления подтвержден метаданными Drive.
 
